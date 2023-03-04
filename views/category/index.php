@@ -27,7 +27,7 @@ include("views/includes/header_admin.php")
                         <a href="index.php?id=<?php echo $category->getMaTloai() ?>&controller=category&action=edit"><i class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td>
-                            <a href="process_components/process_delete_category.php?matloai=1"><i class="fa-solid fa-trash"></i></a>
+                            <a href="index.php?controller=category&action=delete&id=<?php echo $category->getMaTloai() ?>" ><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php
