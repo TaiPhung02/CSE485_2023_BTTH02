@@ -77,7 +77,7 @@
                 <img src="<?= $article->getHinhanh() ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-center">
-                        <a href="index.php?controller=detail&ma_bviet=<?php echo $article->getMaBviet() ?>" class="text-decoration-none"><?php echo $article->getTieude() ?></a>
+                        <a href="index.php?controller=detail&id=<?php echo $article->getMaBviet() ?>" class="text-decoration-none"><?php echo $article->getTieude() ?></a>
                     </h5>
                 </div>
             </div>
