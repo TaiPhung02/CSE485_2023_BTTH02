@@ -4,7 +4,7 @@ include("views/includes/header_admin.php")
 <main class="container mt-5 mb-5">
         <div class="row">
             <div class="col-sm">
-                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
+                <a href="./index.php?controller=author&action=type_add" class="btn btn-success">Thêm mới</a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -15,10 +15,12 @@ include("views/includes/header_admin.php")
                         </tr>
                     </thead>
                     <tbody>
-                       
+                       <?php
+                       foreach($authors as $author){
+                       ?>
                         <tr>
-                            <th scope="row"><?php echo $row['ma_tgia']?></th>
-                            <td>tacgia</td>
+                            <th scope="row"><?php echo $author -> getMaTgia()?></th>
+                            <td> <?php echo $author -> getTenTgia()?> </td>
                             <td>
                                 <a href="edit_author.php?matgia=1"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
@@ -26,6 +28,7 @@ include("views/includes/header_admin.php")
                                 <a href="process_components/process_delete_author.php?matgia=1"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

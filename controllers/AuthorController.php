@@ -4,12 +4,16 @@ class AuthorController{
     public function index(){
         $authorService = new AuthorService();
         $authors = $authorService->getAllAuthors();
-        include("views/author/author.php");
+        include("views/author/index.php");
+    }
+    public function type_add(){
+        include("views/author/add_author.php");
     }
 
     public function add() {
-        //đổ view add author vào trang web
-        include("views/author/add_author.php");
+        $authorService = new AuthorService();
+        $authors = $authorService->addAuthor($_POST['txt_tentgia']);
+        include("views/author/index.php");
     }
 
     public function edit() {
