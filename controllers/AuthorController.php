@@ -26,4 +26,9 @@ class AuthorController{
         $authors = $authorService->updateAuthor($_POST['txt_matgia'],$_POST['txt_tentgia']);
         include("views/author/index.php");
     }
+    public function delete(){
+        $authorService = new AuthorService();
+        $authors = $authorService->deleteAuthor($_GET['id']);
+        include("views/author/index.php");
+    }
 }
