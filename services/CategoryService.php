@@ -20,7 +20,7 @@ class CategoryService
         return $categories;
     }
 
-
+// Từ dòng 23 đến dòng 62 là của update =================================================================
     public function get_id_Category($id)
     {
         $dbConn = new DbConnection();
@@ -59,14 +59,14 @@ class CategoryService
 
         return $categories;
     }
-
-    public function storeCategory($name){
+// Của add =================================================================================================
+    public function addCategory($name){
   
        $dbConn = new DBConnection();
        $conn = $dbConn->getConnection();
 
-        $sql_store = "INSERT INTO `theloai`(`ten_tloai`) VALUES ('" . $name . "')";
-        $stmt_store = $conn->query($sql_store);
+        $sql_add = "INSERT INTO `theloai`(`ten_tloai`) VALUES ('" . $name . "')";
+        $stmt_add = $conn->query($sql_add);
 
         $sql_select = "SELECT * FROM theloai";
         $stmt_select = $conn->query($sql_select);
@@ -79,4 +79,24 @@ class CategoryService
 
         return $categories;
     }
+// Của delete =================================================================================================
+    public function deleteCategory($id){
+  
+        $dbConn = new DBConnection();
+        $conn = $dbConn->getConnection();
+ 
+        $sql_delete = "DELETE FROM `theloai` WHERE `ma_tloai` = '" . $id . "'";
+        $stmt_delete = $conn->query($sql_delete);
+ 
+        $sql_select = "SELECT * FROM theloai";
+        $stmt_select = $conn->query($sql_select);
+ 
+         $categories = [];
+         while($row = $stmt_select->fetch()){
+             $category = new Category( $row['ma_tloai'], $row['ten_tloai']);
+             array_push($categories,$category);
+         }
+ 
+         return $categories;
+     }
 }
