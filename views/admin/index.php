@@ -11,7 +11,7 @@ include 'views/includes/header_admin.php';
                     </h5>
 
                     <h5 class="h1 text-center">
-
+                    <?php echo count($user) ?>
                     </h5>
                 </div>
             </div>
@@ -25,7 +25,7 @@ include 'views/includes/header_admin.php';
                     </h5>
 
                     <h5 class="h1 text-center">
-
+                        <?php echo count($category) ?>
                     </h5>
                 </div>
             </div>
@@ -39,7 +39,7 @@ include 'views/includes/header_admin.php';
                     </h5>
 
                     <h5 class="h1 text-center">
-
+                    <?php echo count($author) ?>
                     </h5>
                 </div>
             </div>
@@ -53,7 +53,7 @@ include 'views/includes/header_admin.php';
                     </h5>
 
                     <h5 class="h1 text-center">
-
+                    <?php echo count($article) ?>
                     </h5>
                 </div>
             </div>
