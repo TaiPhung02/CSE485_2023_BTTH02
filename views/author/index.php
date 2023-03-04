@@ -22,7 +22,7 @@ include("views/includes/header_admin.php")
                             <th scope="row"><?php echo $author -> getMaTgia()?></th>
                             <td> <?php echo $author -> getTenTgia()?> </td>
                             <td>
-                                <a href="edit_author.php?matgia=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="index.php?id=<?php echo $author->getMaTgia() ?>&controller=author&action=edit"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                             <td>
                                 <a href="process_components/process_delete_author.php?matgia=1"><i class="fa-solid fa-trash"></i></a>
