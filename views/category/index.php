@@ -4,7 +4,7 @@ include("views/includes/header_admin.php")
 <main class="container mt-5 mb-5">
     <div class="row">
         <div class="col-sm">
-            <a href="add_category.php" class="btn btn-success">Thêm mới</a>
+            <a href="index.php?controller=category&action=type_add" class="btn btn-success">Thêm mới</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -15,16 +15,24 @@ include("views/includes/header_admin.php")
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                            foreach($categories as $category){
+                        ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
+                        <th scope="row"><?php echo $category -> getMaTloai() ?></th>
                         <td>
-                            <a href="edit_category.php?matloai=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <?php echo $category -> getTenTloai() ?>
+                        </td>
+                        <td>
+                        <a href="index.php?id=<?php echo $category->getMaTloai() ?>&controller=category&action=edit"><i class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td>
                             <a href="process_components/process_delete_category.php?matloai=1"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
+                    <?php
+                            }
+                        ?>
                 </tbody>
             </table>
         </div>
