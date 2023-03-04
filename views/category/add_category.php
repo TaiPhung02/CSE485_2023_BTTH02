@@ -6,12 +6,8 @@ include ("views/includes/header.php");
 
     <div class="row">
         <div class="col-sm">
-            <h3 class="text-center text-uppercase fw-bold">Sửa thông tin thể loại</h3>
+            <h3 class="text-center text-uppercase fw-bold">Thêm thông tin thể loại</h3>
             <form action="./index.php?controller=category&action=add" method="post">
-                <div class="input-group mt-3 mb-3">
-                    <span class="input-group-text" id="lblCatId">Mã thể loại</span>
-                    <input type="text" class="form-control" name="txt_matloai">
-                </div>
                 <div class="input-group mt-3 mb-3">
                     <span class="input-group-text" id="lblCatName">Tên thể loại</span>
                     <input type="text" class="form-control" name="txt_tentloai">
