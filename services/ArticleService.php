@@ -1,5 +1,5 @@
 <?php
-include ("configs/DBConnection.php");
+require_once ("configs/DBConnection.php");
 include ("models/Article.php");
 
 class ArticleService {
@@ -19,7 +19,7 @@ class ArticleService {
         return $articles;
     }
 
-    public function getDetailArticle($ma_bviet) {
+    public function getDetailArticle($id) {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
         
@@ -27,7 +27,7 @@ class ArticleService {
         FROM baiviet
         INNER JOIN tacgia ON baiviet.ma_tgia = tacgia.ma_tgia
         INNER JOIN theloai ON theloai.ma_tloai = baiviet.ma_tloai
-        WHERE ma_bviet = '".$ma_bviet."'";
+        WHERE ma_bviet = '".$id."'";
         $stmt = $conn->query($sql);
 
         $detailArticles = [];
