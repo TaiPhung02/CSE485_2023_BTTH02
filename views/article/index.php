@@ -4,7 +4,7 @@ include("views/includes/header_admin.php")
 <main class="container mt-5 mb-5">
     <div class="row">
         <div class="col-sm">
-            <a href="add_article.php" class="btn btn-success">Thêm mới</a>
+            <a href="index.php?controller=article&action=type_add" class="btn btn-success">Thêm mới</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -17,19 +17,30 @@ include("views/includes/header_admin.php")
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                            foreach($articles as $article) {
+                        ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <th scope="row"><?php echo $article -> getMaBviet() ?></th>
                         <td>
-                            <a href="edit_article.php?ma_bviet=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <?php echo $article -> getTieude() ?>
                         </td>
                         <td>
-                            <a href="process_components/process_delete_article.php?mabviet=1"><i class="fa-solid fa-trash"></i></a>
+                            <?php echo $article -> getTenBhat() ?>
+                        </td>
+                        <td>
+                            <?php echo $article -> getTenTgia() ?>
+                        </td>
+                        <td>
+                        <a href="index.php?id=<?php echo $article->getMaBviet() ?>&controller=article&action=edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+                        <td>
+                            <a href="index.php?controller=article&action=delete&id=<?php echo $article->getMaBviet() ?>" ><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
-
+                <?php
+                        } 
+                    ?>                  
                 </tbody>
             </table>
         </div>

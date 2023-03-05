@@ -1,24 +1,62 @@
 <?php
+include_once("services/ArticleService.php");
+include_once("services/AuthorService.php");
+include_once("services/CategoryService.php");
+
 class ArticleController{
-    // Hàm xử lý hành động index
     public function index(){
-        // Nhiệm vụ 1: Tương tác với Services/Models
-        echo "Tương tác với Services/Models from Article";
-        // Nhiệm vụ 2: Tương tác với View
-        echo "Tương tác với View from Article";
+        $articleService = new ArticleService();
+        $articles = $articleService->getAllArticle();
+        include_once("views/article/index.php");
+    }
+
+    public function type_add(){
+        $authorService = new AuthorService();
+        $authors = $authorService->getAllAuthors();
+        $categoryService = new CategoryService();
+        $categories = $categoryService->getAllCategory();
+        include_once("views/article/add_article.php");
     }
 
     public function add(){
-        // Nhiệm vụ 1: Tương tác với Services/Models
-        // echo "Tương tác với Services/Models from Article";
-        // Nhiệm vụ 2: Tương tác với View
-        include("views/article/add_article.php");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $tieuDe = $_POST['txttieude'];
+            $baiHat = $_POST['txttenbhat'];
+            $maTloai = $_POST['txtmatheloai'];
+            $tomTat = $_POST['txttomtat'];
+            $noiDung = $_POST['txtnoidung'];
+            $maTgia = $_POST['txtmatgia'];
+            $ngayViet = $_POST['date-input'];
+            $link =  $_POST['path'].$_FILES['file-upload']['name'];
+            $hinhAnh = $_FILES['file-upload']['name'];
+        
+            $articleService = new ArticleService();
+            $articleService->addArticle($tieuDe, $baiHat, $maTloai, $tomTat, $noiDung, $maTgia, $ngayViet, $hinhAnh);
+            move_uploaded_file($_FILES['file-upload']['tmp_name'], $link);
+            header("Location:index.php?controller=article&action=index");
+        }
     }
 
-    public function list(){
-        // Nhiệm vụ 1: Tương tác với Services/Models
-        // echo "Tương tác với Services/Models from Article";
-        // Nhiệm vụ 2: Tương tác với View
-        include("views/article/list_article.php");
+    public function edit($id){
+        $authorService = new AuthorService($id);
+        $id_authors = $authorService->get_id_Article($id);
+        $categoryService = new CategoryService($id);
+        $id_categories = $categoryService->get_id_Article($id);
+        $articleService = new ArticleService($id);
+        $id_articles = $articleService->get_id_Article($id);
+        include("views/article/edit_article.php");
+    }
+
+
+    public function update(){
+        $articleService = new ArticleService();
+        $articles = $articleService->updateArticle($_POST['txt_matloai'],$_POST['txt_tentloai']);
+        include("views/article/index.php");
+    }
+
+    public function delete(){
+        $articleService = new ArticleService();
+        $articles = $articleService->deleteArticle($_GET['id']);
+        include("views/article/index.php");
     }
 }
