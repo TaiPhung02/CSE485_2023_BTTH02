@@ -35,7 +35,7 @@ include("views/includes/header.php");
         <?php foreach($articles as $article) { ?>
         <div class="col-sm-3">
             <div class="card mb-2" style="width: 100%; ;">
-                <img src="<?= $article->getHinhanh() ?>" class="card-img-top" alt="...">
+                <img src="assets/images/songs/<?php echo $article->getHinhanh() ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-center">
                         <a href="index.php?controller=detail&id=<?php echo $article->getMaBviet() ?>" class="text-decoration-none"><?php echo $article->getTieude() ?></a>
