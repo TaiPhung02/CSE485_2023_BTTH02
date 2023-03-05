@@ -4,7 +4,7 @@ include("views/includes/header.php");
 <main class="container mt-5">
     <div class="row mb-5">
         <div class="col-sm-4">
-            <img src="<?php echo $detailArticles[0]->getHinhanh() ?>" class="img-fluid" alt="...">
+            <img src="assets/images/songs/<?php echo $detailArticles[0]->getHinhanh() ?>" class="img-fluid" alt="...">
         </div>
         <div class="col-sm-8">
             <h5 class="card-title mb-2">
