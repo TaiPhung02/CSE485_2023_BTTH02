@@ -38,6 +38,10 @@ class ArticleController{
     }
 
     public function edit($id){
+        $authorService = new AuthorService($id);
+        $id_authors = $authorService->get_id_Article($id);
+        $categoryService = new CategoryService($id);
+        $id_categories = $categoryService->get_id_Article($id);
         $articleService = new ArticleService($id);
         $id_articles = $articleService->get_id_Article($id);
         include("views/article/edit_article.php");
@@ -50,4 +54,9 @@ class ArticleController{
         include("views/article/index.php");
     }
 
+    public function delete(){
+        $articleService = new ArticleService();
+        $articles = $articleService->deleteArticle($_GET['id']);
+        include("views/article/index.php");
+    }
 }

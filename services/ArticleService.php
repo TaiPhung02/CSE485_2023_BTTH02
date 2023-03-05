@@ -91,4 +91,24 @@ class ArticleService {
 
         return $articles;
     }
+
+    public function deleteArticle($id){
+  
+        $dbConn = new DBConnection();
+        $conn = $dbConn->getConnection();
+ 
+        $sql_delete = "DELETE FROM `baiviet` WHERE `ma_bviet` = '" . $id . "'";
+        $stmt_delete = $conn->query($sql_delete);
+ 
+        $sql_select = "SELECT * FROM baiviet";
+        $stmt_select = $conn->query($sql_select);
+ 
+        $articles = [];
+        while($row = $stmt_select->fetch()){
+            $article = new Article($row['ma_bviet'], $row['tieude'], $row['ten_bhat'], $row['ma_tloai'], $row['tomtat'], $row['noidung'], $row['ma_tgia'], $row['ngayviet'], $row['hinhanh']);
+            array_push($articles,$article);
+        }
+ 
+        return $articles;
+    }
 }
