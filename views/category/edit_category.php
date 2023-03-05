@@ -1,5 +1,5 @@
 <?php
-include ("views/includes/header.php");
+include ("views/includes/header_admin.php");
 ?>
 
 <main class="container mt-5 mb-5">
@@ -27,5 +27,5 @@ include ("views/includes/header.php");
 </main>
 
 <?php
-include("views/includes/footer.php");
+include("views/includes/footer_admin.php");
 ?>

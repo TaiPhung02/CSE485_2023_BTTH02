@@ -39,7 +39,7 @@
                             <a class="nav-link" href="index.php?controller=article">Bài viết</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?controller=users">Người dùng</a>
+                            <a class="nav-link" href="index.php?controller=user">Người dùng</a>
                         </li>
                     </ul>
                 </div>
