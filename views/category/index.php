@@ -1,12 +1,7 @@
 <?php
 include("views/includes/header_admin.php");
 include_once("configs/DbConnection.php");
-if(!$_SESSION['login']) {
-    header("Location:index.php?controller=home&action=login");
-}
-if($_SESSION['login'] && $_SESSION['login']!='admin') {
-    header("Location:index.php?controller=home&action=login");
-}
+
     
 ?>
 

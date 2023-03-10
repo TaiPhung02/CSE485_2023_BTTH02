@@ -42,6 +42,7 @@
                             <a class="nav-link" href="index.php?controller=user">Người dùng</a>
                         </li>
                     </ul>
+                    <div><a href="index.php?controller=login&action=logout">Đăng xuất</a></div>
                 </div>
             </div>
         </nav>
