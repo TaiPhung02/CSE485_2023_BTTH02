@@ -26,7 +26,7 @@ include ("views/includes/header_admin.php");
                 </div>
                 <div class="form-group  float-end ">
                     <input type="submit" value="Lưu lại" class="btn btn-success">
-                    <a href="user.php" class="btn btn-warning ">Quay lại</a>
+                    <a href="index.php?controller=user" class="btn btn-warning ">Quay lại</a>
                 </div>
 
             </form>
