@@ -12,6 +12,8 @@ include("views/includes/header_admin.php")
                         <th scope="col">Tên Tiêu Đề</th>
                         <th scope="col">Tên Bài Hát</th>
                         <th scope="col">Tên Tác Giả</th>
+                        <th scope="col">Tóm tắt</th>
+                        <th scope="col">Ngày</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
@@ -29,10 +31,16 @@ include("views/includes/header_admin.php")
                             <?php echo $article -> getTenBhat() ?>
                         </td>
                         <td>
-                            <?php echo $article -> getTenTgia() ?>
+                            <?php echo $article -> getTomtat() ?>
                         </td>
                         <td>
-                        <a href="index.php?id=<?php echo $article->getMaBviet() ?>&controller=article&action=edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <?php echo $article -> getMaTgia() ?>
+                        </td>
+                        <td>
+                            <?php echo $article -> getNgayviet() ?>
+                        </td>
+                        <td>
+                        <a href="index.php?controller=article&action=edit&id=<?php echo $article->getMaBviet()?>"><i class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td>
                             <a href="index.php?controller=article&action=delete&id=<?php echo $article->getMaBviet() ?>" ><i class="fa-solid fa-trash"></i></a>

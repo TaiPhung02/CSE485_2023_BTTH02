@@ -38,20 +38,34 @@ class ArticleController{
     }
 
     public function edit($id){
-        $authorService = new AuthorService($id);
-        $id_authors = $authorService->get_id_Article($id);
-        $categoryService = new CategoryService($id);
-        $id_categories = $categoryService->get_id_Article($id);
-        $articleService = new ArticleService($id);
+        $authorService = new AuthorService();
+        $id_authors = $authorService->getAllAuthors();
+        $categoryService = new CategoryService();
+        $id_categories = $categoryService->getAllCategory();
+        $articleService = new ArticleService();
         $id_articles = $articleService->get_id_Article($id);
         include("views/article/edit_article.php");
     }
 
 
     public function update(){
-        $articleService = new ArticleService();
-        $articles = $articleService->updateArticle($_POST['txt_matloai'],$_POST['txt_tentloai']);
-        include("views/article/index.php");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id=$_POST['txtid'];
+            $tieuDe = $_POST['txttieude'];
+            $baiHat = $_POST['txttenbhat'];
+            $maTloai = $_POST['txtmatheloai'];
+            $tomTat = $_POST['txttomtat'];
+            $noiDung = $_POST['txtnoidung'];
+            $maTgia = $_POST['txtmatgia'];
+            $ngayViet = $_POST['date-input'];
+            $link =  $_POST['path'].$_FILES['file-upload']['name'];
+            $hinhAnh = $_FILES['file-upload']['name'];
+        
+            $articleService = new ArticleService();
+            $articleService->updateArticle($id,$tieuDe, $baiHat, $maTloai, $tomTat, $noiDung, $maTgia, $ngayViet, $hinhAnh);
+            move_uploaded_file($_FILES['file-upload']['tmp_name'], $link);
+            header("Location:index.php?controller=article&action=index");
+        }
     }
 
     public function delete(){

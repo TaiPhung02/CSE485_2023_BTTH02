@@ -2,15 +2,15 @@
 class Article {
     private $ma_bviet, $tieude, $ten_bhat, $ten_tloai, $tomtat, $noidung, $ten_tgia, $ngayviet, $hinhanh;
 
-    public function __construct($ma_bviet, $tieude, $ten_bhat, $ten_tloai, $tomtat, $noidung, $ten_tgia, $ngayviet, $hinhanh)
+    public function __construct($ma_bviet, $tieude, $ten_bhat, $ma_tloai, $tomtat, $noidung, $ma_tgia, $ngayviet, $hinhanh)
     {
         $this->ma_bviet = $ma_bviet;
         $this->tieude = $tieude;
         $this->ten_bhat = $ten_bhat;
-        $this->ten_tloai = $ten_tloai;
+        $this->ma_tloai = $ma_tloai;
         $this->tomtat = $tomtat;
         $this->noidung = $noidung;
-        $this->ten_tgia = $ten_tgia;
+        $this->ma_tgia = $ma_tgia;
         $this->ngayviet = $ngayviet;
         $this->hinhanh = $hinhanh;
     }
@@ -27,8 +27,8 @@ class Article {
         return $this->ten_bhat;
     }
 
-    public function getTenTloai(){
-        return $this->ten_tloai;
+    public function getMaTloai(){
+        return $this->ma_tloai;
     }
 
     public function getTomtat(){
@@ -39,8 +39,8 @@ class Article {
         return $this->noidung;
     }
 
-    public function getTenTgia(){
-        return $this->ten_tgia;
+    public function getMaTgia(){
+        return $this->ma_tgia;
     }
 
     public function getNgayviet(){
