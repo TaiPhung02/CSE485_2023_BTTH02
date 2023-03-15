@@ -13,7 +13,7 @@ class ArticleService {
 
         $articles = [];
         while($row = $stmt->fetch()){
-            $article = new Article($row['ma_bviet'], $row['tieude'], $row['ten_bhat'], $row['ma_tloai'], $row['tomtat'], $row['noidung'], $row['ten_tgia'], $row['ngayviet'], $row['hinhanh']);
+            $article = new Article($row['ma_bviet'], $row['tieude'], $row['ten_bhat'], $row['ten_tloai'], $row['tomtat'], $row['noidung'], $row['ten_tgia'], $row['ngayviet'], $row['hinhanh']);
             array_push($articles,$article);
         }
 
@@ -47,7 +47,7 @@ class ArticleService {
         
 
         $sql_add = "INSERT INTO `baiviet`(`tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `noidung`, `ma_tgia`, `ngayviet`, `hinhanh`) 
-        VALUES ('$tieuDe','$baiHat','$maTloai','$tomTat','$noiDung','$maTgia','$ngayViet','$hinhAnh')";
+        VALUES ('$tieuDe','$baiHat','$maTloai','$tomTat','$noiDung','$maTgia',CURDATE(),'$hinhAnh')";
         $stmt_add = $conn->query($sql_add);
     }
 
@@ -64,8 +64,22 @@ class ArticleService {
 
         $articles = [];
         while ($row = $stmt->fetch()) {
-            $article = new Article($row['ma_bviet'], $row['tieude'], $row['ten_bhat'], $row['ten_tloai'], $row['tomtat'], $row['noidung'], $row['ten_tgia'], $row['ngayviet'], $row['hinhanh']);
-            array_push($articles, $article);
+
+            $arr = [
+                'ma_bviet' => $row['ma_bviet'],
+                'tieude' => $row['tieude'],
+                'ten_bhat' => $row['ten_bhat'],
+                'ma_tloai' => $row['ma_tloai'],
+                'tomtat' => $row['tomtat'],
+                'noidung' => $row['noidung'],
+                'ma_tgia' => $row['ma_tgia'],
+                'hinhanh' => $row['hinhanh'],
+                'ten_tgia' => $row['ten_tgia'],
+                'ngayviet' => $row['ngayviet'],
+                'ten_tloai' => $row['ten_tloai']
+
+            ];
+            array_push($articles, $arr);
         }
         return $articles;
     }
@@ -76,20 +90,9 @@ class ArticleService {
         $conn = $dbConn->getConnection();
 
 
-        $sql_update = "UPDATE `theloai` SET `ten_tloai`='" . $name . "' WHERE `ma_tloai` = '" . $id . "'";
+        $sql_update = "UPDATE `baiviet` SET `tieude` = '$tieuDe', `ten_bhat` = '$baiHat', `ma_tloai` = '$maTloai' , `tomtat` = '$tomTat',
+        `noidung` = '$noiDung' , `ma_tgia` = '$maTgia' , `ngayviet` = CURDATE() , `hinhanh` = '$hinhAnh' WHERE `ma_bviet` = '$id' ";
         $stmt_update = $conn->query($sql_update);
-
-        $sql_select = "SELECT * FROM theloai";
-        $stmt_select = $conn->query($sql_select);
-
-    
-        $articles = [];
-        while($row = $stmt_select->fetch()){
-            $article = new Article($row['ma_bviet'], $row['tieude'], $row['ten_bhat'], $row['ten_tloai'], $row['tomtat'], $row['noidung'], $row['ten_tgia'], $row['ngayviet'], $row['hinhanh']);
-            array_push($articles,$article);
-        }
-
-        return $articles;
     }
 
     public function deleteArticle($id){

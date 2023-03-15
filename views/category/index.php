@@ -1,6 +1,10 @@
 <?php
-include("views/includes/header_admin.php")
+include("views/includes/header_admin.php");
+include_once("configs/DbConnection.php");
+
+    
 ?>
+
 <main class="container mt-5 mb-5">
     <div class="row">
         <div class="col-sm">

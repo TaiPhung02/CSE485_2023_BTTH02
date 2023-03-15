@@ -6,4 +6,8 @@ class HomeController {
         $articles = $articleService->getAllArticle();
         include("views/home/index.php");
     }
+
+    public function login() {
+        include("views/home/login.php");
+    }
 }
